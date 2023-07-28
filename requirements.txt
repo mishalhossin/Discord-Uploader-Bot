@@ -2,3 +2,4 @@ aiohttp
 discord.py
 python-dotenv
 requests
+aiodns
