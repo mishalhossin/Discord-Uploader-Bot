@@ -35,7 +35,7 @@ async def on_ready():
     
     print(print_in_color(f"{bot.user} aka {bot.user.name} has connected to Discord!", "\033[1;97"))
     print(print_in_color(f"Invite link: {invite_link}", "1;36"))
-    
+    [os.remove(os.path.join('temp', f)) for f in os.listdir('temp')]
 
 
 def load_responses(url):
