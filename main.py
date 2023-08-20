@@ -53,7 +53,7 @@ async def upload(ctx, attachment: discord.Attachment):
     message = await ctx.send(f"Selling your soul to the devil..")
     file_data = await attachment.read()
     file_name = f"{attachment.filename}"
-    print_in_color(f"Uploading file {file_name}", "\033[32m")
+    print_in_color(f"Uploading file {file_name}", "\033[32")
     await message.edit(content=f"Calculating file hash")
     hash_value = hashlib.sha256(file_data).hexdigest()
     await message.edit(content=f"File hash: {hash_value}")
@@ -86,9 +86,10 @@ async def upload(ctx, attachment: discord.Attachment):
                     embed.add_field(name="File Name", value=file_name, inline=False)
                     embed.add_field(name="File Size", value=f"{bytes_size} bytes", inline=False)
                     if is_nsfw:
-                        embed.add_field(name="File URL", value=f"||{file_url}||", inline=False)
+                        embed.add_field(name="0x0 File URL", value=f"||{file_url}||", inline=False)
                     else:
-                        embed.add_field(name="File URL", value=file_url, inline=False)
+                        embed.add_field(name="0x0 File URL", value=file_url, inline=True)
+                        embed.set_image(url=attachment.url)
                     embed.set_footer(text=footer_text)
                     view = discord.ui.View()
                     view.add_item(discord.ui.Button(label="Open File", url=file_url))
