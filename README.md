@@ -1,4 +1,9 @@
+
 # Discord Uploader Bot
+
+<p align="center">
+    <img src="https://github.com/mishalhossin/Discord-Uploader-Bot/assets/91066601/f1df760f-690a-4144-8f2c-fb28b18e399c" alt="File Folder">
+</p>
 
 This is a Discord bot that allows users to upload files to file hosting service directly from Discord. The bot is written in Python and uses the Discord.py and aiohttp libraries.
 
@@ -15,6 +20,7 @@ This is a Discord bot that allows users to upload files to file hosting service 
    ```
    pip install -r requirements.txt
    ```
+
 
 3. Create a `.env` file in the root directory of the project and add your Discord bot token:
 
