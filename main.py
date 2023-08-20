@@ -49,19 +49,18 @@ print(f"Loaded {len(responses)} responses")
 @bot.hybrid_command(name="upload", description="Upload a file")
 async def upload(ctx, attachment: discord.Attachment):
     await ctx.defer()
-    dns_resolver = aiohttp.resolver.AsyncResolver(nameservers=["1.1.1.1"])
     random_msg = random.choice(responses)
-    message = await ctx.send(f"🤔")
+    message = await ctx.send(f"Selling your soul to the devil..")
     file_data = await attachment.read()
     file_name = f"{attachment.filename}"
     print_in_color(f"Uploading file {file_name}", "\033[32m")
-    
     await message.edit(content=f"Calculating file hash")
-    sha256_hash = hashlib.sha256(file_data)
-    hash_value = sha256_hash.hexdigest()
+    hash_value = hashlib.sha256(file_data).hexdigest()
     await message.edit(content=f"File hash: {hash_value}")
     bytes_io = io.BytesIO(file_data)
+    await message.edit(content=f"Calculating file bytes size ")
     bytes_size = len(bytes_io.getbuffer())
+    await message.edit(content=f"File bytes size: {bytes_size}")
     file = (file_name, bytes_io)
 
     try:
@@ -70,7 +69,7 @@ async def upload(ctx, attachment: discord.Attachment):
         data = aiohttp.FormData()
         data.add_field('file', file[1], filename=file[0])
         
-        async with aiohttp.ClientSession(connector=aiohttp.TCPConnector(resolver=dns_resolver)) as session:
+        async with aiohttp.ClientSession() as session:
             async with session.post("https://0x0.st", data=data) as response:
                 if response.status == 200:
                     file_url = await response.text()
