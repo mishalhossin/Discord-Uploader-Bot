@@ -1,6 +1,6 @@
-# Discord Anonfile Uploader Bot
+# Discord Uploader Bot
 
-This is a Discord bot that allows users to upload files to the anonymous file hosting service Anonfiles directly from Discord. The bot is written in Python and uses the Discord.py and aiohttp libraries.
+This is a Discord bot that allows users to upload files to file hosting service directly from Discord. The bot is written in Python and uses the Discord.py and aiohttp libraries.
 
 ## Installation
 
@@ -30,9 +30,7 @@ This is a Discord bot that allows users to upload files to the anonymous file ho
 
 ## Usage
 
-The bot is triggered by `/upload` slash command command and a file attachment. For example:
-
-![image](https://github.com/mishalhossin/Anonfiles-discord-bot/assets/91066601/873325e2-798b-48e8-bf1a-c73b9e149566)
+The bot is triggered by `/upload` slash command command and a file attachment. 
 
 
 The bot will respond with a message indicating that it is processing the file and will then upload it to Anonfiles. Once the upload is complete, the bot will post a message with the file's URL and other information.
