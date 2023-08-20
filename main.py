@@ -18,6 +18,9 @@ intents = discord.Intents.default()
 bot = commands.Bot(command_prefix="/", intents=intents, heartbeat_timeout=60)
 TOKEN = os.getenv('DISCORD_TOKEN')
 
+def print_in_color(text, color):
+    print(f"\033[{color}m{text}\033[0m")
+    
 @bot.event
 async def on_ready():
     await bot.tree.sync()
@@ -26,16 +29,14 @@ async def on_ready():
         permissions=discord.Permissions(),
         scopes=("bot", "applications.commands")
     )
-    def print_in_color(text, color):
-        return f"\033[{color}m{text}\033[0m"
 
     if os.name == 'posix':
         os.system('clear')
     if os.name == 'nt':
         os.system('cls')
     
-    print(print_in_color(f"{bot.user} aka {bot.user.name} has connected to Discord!", "\033[1;97"))
-    print(print_in_color(f"Invite link: {invite_link}", "1;36"))
+    print_in_color(f"{bot.user} is ready to upload some files!", "\033[1;97")
+    print_in_color(f"Invite link: {invite_link}", "1;36")
 
 
 def load_responses(url):
@@ -53,7 +54,7 @@ async def upload(ctx, attachment: discord.Attachment):
     message = await ctx.send(f"🤔")
     file_data = await attachment.read()
     file_name = f"{attachment.filename}"
-    print("\033[32m" + f"Uploading file {file_name}" + "\033[0m")
+    print_in_color(f"Uploading file {file_name}", "\033[32m")
     
     await message.edit(content=f"Calculating file hash")
     sha256_hash = hashlib.sha256(file_data)
