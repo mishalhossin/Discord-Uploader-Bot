@@ -32,6 +32,7 @@ This is a Discord bot that allows users to upload files to file hosting service 
 
 The bot is triggered by `/upload` slash command command and a file attachment. 
 
+![image](https://github.com/mishalhossin/Discord-Uploader-Bot/assets/91066601/929afe45-908d-428c-b157-51aa1e0f6fbe)
 
 The bot will respond with a message indicating that it is processing the file and will then upload it to Anonfiles. Once the upload is complete, the bot will post a message with the file's URL and other information.
 
